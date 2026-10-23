@@ -1,0 +1,700 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Sanu 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Georgia, serif;
+  background: #fff0f5;
+  color: #792747;
+  overflow-x: hidden;
+}
+
+button { font-family: inherit; cursor: pointer; }
+
+.hero {
+  min-height: 100svh;
+  padding: 75px 20px 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #ffdae8, #ffb6d0, #f9d8ff);
+}
+
+.hero::before,
+.hero::after {
+  content: "♡";
+  position: absolute;
+  color: #ffffff80;
+  font-size: 180px;
+  pointer-events: none;
+}
+
+.hero::before { top: 5%; left: -35px; }
+.hero::after { bottom: 0; right: -35px; }
+
+.music-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+  border: 1px solid #fff;
+  background: #ffffffa6;
+  color: #c52b70;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 22px;
+  box-shadow: 0 5px 15px #b92e6b20;
+}
+
+.music-btn.playing {
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  to { transform: scale(1.1); }
+}
+
+.top-note {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #a72a60;
+}
+
+.bow {
+  font-size: 70px;
+  margin: 22px 0 8px;
+  animation: bob 2s infinite ease-in-out;
+}
+
+@keyframes bob {
+  50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+h1 {
+  font-size: clamp(38px, 10vw, 65px);
+  line-height: 1.2;
+  color: #b51f62;
+  text-shadow: 0 3px 0 #ffffff9c;
+  margin: 10px 0 18px;
+}
+
+h1 span { color: #e63d86; }
+
+.hero p {
+  max-width: 380px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.btn {
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #f75c9d, #d72c76);
+  color: white;
+  padding: 14px 23px;
+  font-size: 15px;
+  box-shadow: 0 7px 18px #c02c6b35;
+  margin-top: 22px;
+  transition: transform .2s;
+}
+
+.btn:active { transform: scale(.96); }
+
+.section {
+  padding: 55px 19px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(27px, 7vw, 36px);
+  color: #c42e70;
+  margin-bottom: 14px;
+}
+
+.subtitle {
+  max-width: 410px;
+  line-height: 1.8;
+  margin: 0 auto 25px;
+  font-size: 15px;
+}
+
+.letter-card {
+  max-width: 520px;
+  margin: 25px auto 0;
+  background: #fffafc;
+  border: 1px solid #f7b4ce;
+  border-radius: 23px;
+  padding: 27px 21px;
+  box-shadow: 0 10px 35px #bc46751c;
+  text-align: left;
+  line-height: 1.9;
+  position: relative;
+}
+
+.letter-card::before {
+  content: "🌷";
+  display: block;
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.letter-card p { margin-bottom: 17px; }
+
+.letter-card .greeting {
+  text-align: center;
+  color: #c42e70;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.sign {
+  text-align: right;
+  color: #c42e70;
+  font-style: italic;
+}
+
+.song-section {
+  background: linear-gradient(150deg, #ffe0ec, #fff5fa);
+}
+
+.song-card {
+  max-width: 410px;
+  margin: 25px auto;
+  padding: 25px 18px;
+  background: #ffffffc9;
+  border: 1px solid #f6b0cb;
+  border-radius: 23px;
+  box-shadow: 0 10px 30px #b92e6b15;
+}
+
+.record {
+  width: 130px;
+  height: 130px;
+  margin: 10px auto 20px;
+  background: radial-gradient(circle, #ffe8f2 0 12%, #d74483 13% 16%, #78224b 17% 45%, #e86a9f 46% 48%, #762047 49%);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 5px 20px #a72a6035;
+}
+
+.record span {
+  font-size: 35px;
+  background: #fff0f6;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.record.spinning { animation: spin 4s linear infinite; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.song-card h3 {
+  color: #b51f62;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.song-card p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.small-notes {
+  background: #fff8fb;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  max-width: 520px;
+  margin: 25px auto 0;
+}
+
+.note {
+  min-height: 145px;
+  border: 1px solid #f5b2cd;
+  border-radius: 18px;
+  padding: 18px 10px;
+  background: #fff0f6;
+  color: #8e2a50;
+  box-shadow: 0 5px 16px #bc467511;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform .2s;
+}
+
+.note:active { transform: scale(.96); }
+
+.note .emoji { font-size: 30px; }
+
+.note strong { font-size: 14px; }
+
+.note .message {
+  display: none;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.note.open {
+  background: #ffe0ed;
+  grid-column: span 2;
+}
+
+.note.open .message { display: block; }
+
+.note.open .hint { display: none; }
+
+.last {
+  background: linear-gradient(160deg, #ffdeeb, #f8d7ff);
+}
+
+.last-card {
+  max-width: 430px;
+  margin: auto;
+  padding: 28px 20px;
+  background: #ffffffb8;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  line-height: 1.9;
+}
+
+footer {
+  padding: 30px 15px;
+  text-align: center;
+  background: #742044;
+  color: #ffe4ef;
+  line-height: 2;
+}
+
+.heart {
+  position: fixed;
+  bottom: -40px;
+  z-index: 9;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-115vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+@media (min-width: 600px) {
+  .notes-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .note.open { grid-column: span 2; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero" id="home">
+
+  <button class="music-btn" id="musicBtn"
+    onclick="toggleMusic()" aria-label="Play birthday melody">
+    ♫
+  </button>
+
+  <div class="top-note">♡ MADE WITH SO MUCH LOVE ♡</div>
+
+  <div class="bow">🎀</div>
+
+  <h1>HAPPY BIRTHDAY<br><span>SANU</span> 🥹🤭</h1>
+
+  <p>
+    Today is your special day, my birthday girl! 🎂💗
+    You deserve all the happiness, love, and
+    sweetest moments in the whole world. 🧸🌷
+  </p>
+
+  <button class="btn" onclick="goTo('mainLetter')">
+    Open Your Love Letter 💌
+  </button>
+
+  <p style="margin-top:30px;font-size:13px">
+    Scroll down for more little surprises ↓
+  </p>
+</header>
+
+<section class="section" id="mainLetter">
+
+  <h2 class="section-title">A Letter For You 💌</h2>
+
+  <p class="subtitle">
+    A little message from my heart to yours. 🥹💕
+  </p>
+
+  <div class="letter-card">
+
+    <p class="greeting">
+      HAPPY BIRTHDAY SANU 🥹🤭💗
+    </p>
+
+    <p>
+      TODAY IS YOUR BDAY AND HAPPY BIRTHDAY BABE 😘🎂
+      I LOVE YOU SO MUCH AND I MISS YOU SOO MUCHH 🥺❤️
+    </p>
+
+    <p>
+      On your special day, I wish you endless happiness,
+      success, and beautiful memories. 🌷✨
+      Thank you for being such a special part of my life. 🫶🏻
+    </p>
+
+    <p>
+      Keep shining, keep smiling, and never forget
+      how special you are to me. 🥹💖🌸
+    </p>
+
+    <p>
+      Happy Birthday, my favourite person. 🎀😘
+    </p>
+
+    <p class="sign">
+      Forever with love,<br>
+      Your Sanu ❤️🧸
+    </p>
+
+  </div>
+</section>
+
+<section class="section song-section" id="song">
+
+  <h2 class="section-title">A Little Song For You 🎶</h2>
+
+  <p class="subtitle">
+    Press play, close your eyes, and enjoy your little
+    birthday melody, princess. 🥹🎀
+  </p>
+
+  <div class="song-card">
+
+    <div class="record" id="record">
+      <span>🎂</span>
+    </div>
+
+    <h3>Birthday Girl 🎀</h3>
+
+    <p>
+      A tiny, sweet melody made specially
+      for your special day. 💗
+    </p>
+
+    <button class="btn" id="playBtn" onclick="toggleMusic()">
+      ▶ Play Your Melody
+    </button>
+
+    <p id="songStatus" aria-live="polite" style="margin-top:12px">
+      Tap to play your cute birthday tune ♡
+    </p>
+
+  </div>
+</section>
+
+<section class="section small-notes" id="notes">
+
+  <h2 class="section-title">Little Notes For You 🧸</h2>
+
+  <p class="subtitle">
+    Each little heart holds a tiny message.
+    Tap them one by one, birthday girl! 💗
+  </p>
+
+  <div class="notes-grid">
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="emoji">🥹💗</span>
+      <strong>Open when you miss me</strong>
+      <span class="hint">Tap here ♡</span>
+      <span class="message">
+        Even when we're apart, you're always
+        in my thoughts. Sending you the
+        biggest virtual hug! 🫂😘
+      </span>
+    </button>
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="emoji">🌷🫶🏻</span>
+      <strong>A little reminder</strong>
+      <span class="hint">Tap here ♡</span>
+      <span class="message">
+        You're special, you're precious,
+        and you deserve so many beautiful
+        things in this world. Never forget that. 💕
+      </span>
+    </button>
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="emoji">😘🎀</span>
+      <strong>When you need a smile</strong>
+      <span class="hint">Tap here ♡</span>
+      <span class="message">
+        Smile for me, birthday girl!
+        Your smile deserves its own
+        little celebration. 🤭💖
+      </span>
+    </button>
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="emoji">🌙✨</span>
+      <strong>A wish for you</strong>
+      <span class="hint">Tap here ♡</span>
+      <span class="message">
+        May every new day bring you
+        new reasons to laugh, dream,
+        and feel loved. 🌸💗
+      </span>
+    </button>
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="emoji">🧸❤️</span>
+      <strong>A virtual hug</strong>
+      <span class="hint">Tap here ♡</span>
+      <span class="message">
+        Imagine the warmest hug ever.
+        Hold it for a moment and remember
+        someone is wishing you happiness. 🫂
+      </span>
+    </button>
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="emoji">🎂🥳</span>
+      <strong>Your birthday wish</strong>
+      <span class="hint">Tap here ♡</span>
+      <span class="message">
+        Make a wish, princess!
+        May this year bring you
+        wonderful surprises and lovely memories. 🎉💝
+      </span>
+    </button>
+
+  </div>
+</section>
+
+<section class="section last">
+
+  <div class="last-card">
+    <div style="font-size:55px">🎂💗🎀</div>
+
+    <h2 class="section-title">One Last Thing...</h2>
+
+    <p>
+      No website could ever fit all the love
+      and good wishes meant for you. 🥹
+    </p>
+
+    <p style="margin-top:15px">
+      So today, eat something sweet,
+      laugh a little louder, and enjoy
+      every beautiful moment. 🌷🧁
+    </p>
+
+    <h3 style="color:#c42e70;margin-top:22px">
+      Happy Birthday, Sanu! 😘❤️
+    </h3>
+
+    <button class="btn" onclick="celebrate()">
+      A Final Birthday Surprise 🎉
+    </button>
+
+    <p id="finalMessage" style="display:none;margin-top:22px">
+      🥹💗 YOU ARE SO SPECIAL! 💗🥹<br>
+      Sending you a million hugs and wishes! 🫂🌸🎀
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  <div style="font-size:28px">♡ 🌷 ♡</div>
+  Made with love, just for Sanu 🥹<br>
+  <small>Forever a special little birthday memory 💗</small>
+</footer>
+
+<script>
+// Smooth scrolling
+function goTo(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+// Floating hearts
+function createHeart() {
+  const heart = document.createElement("span");
+  heart.className = "heart";
+
+  const emojis = ["💗", "💕", "♡", "🌸", "✨", "🎀"];
+  heart.textContent = emojis[
+    Math.floor(Math.random() * emojis.length)
+  ];
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (16 + Math.random() * 20) + "px";
+
+  const duration = 5 + Math.random() * 5;
+  heart.style.animationDuration = duration + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), duration * 1000);
+}
+
+setInterval(createHeart, 650);
+
+// Tap-to-open notes
+function toggleNote(button) {
+  button.classList.toggle("open");
+}
+
+// Cute original melody using browser audio
+let audioContext = null;
+let melodyTimer = null;
+let playing = false;
+let noteIndex = 0;
+
+const melody = [
+  523.25, 659.25, 783.99, 659.25,
+  587.33, 698.46, 783.99, 698.46,
+  659.25, 783.99, 880.00, 783.99,
+  698.46, 659.25, 587.33, 523.25
+];
+
+function playNote(frequency, startTime) {
+  if (!audioContext || audioContext.state !== "running") return;
+
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.value = frequency;
+
+  gain.gain.setValueAtTime(0.0001, startTime);
+  gain.gain.exponentialRampToValueAtTime(0.10, startTime + 0.06);
+  gain.gain.exponentialRampToValueAtTime(0.0001, startTime + 0.48);
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+
+  oscillator.start(startTime);
+  oscillator.stop(startTime + 0.5);
+}
+
+function updateMusicUI() {
+  document.getElementById("musicBtn").textContent =
+    playing ? "Ⅱ" : "♫";
+
+  document.getElementById("playBtn").textContent =
+    playing ? "Ⅱ Pause Melody" : "▶ Play Your Melody";
+
+  document.getElementById("record").classList.toggle(
+    "spinning", playing
+  );
+
+  document.getElementById("musicBtn").classList.toggle(
+    "playing", playing
+  );
+
+  document.getElementById("songStatus").textContent =
+    playing
+      ? "Playing your little birthday melody 💗"
+      : "Tap to play your cute birthday tune ♡";
+}
+
+async function toggleMusic() {
+  if (playing) {
+    clearInterval(melodyTimer);
+    melodyTimer = null;
+    playing = false;
+    updateMusicUI();
+    return;
+  }
+
+  try {
+    const AudioClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioClass) {
+      document.getElementById("songStatus").textContent =
+        "Sorry, audio is not supported in this browser.";
+      return;
+    }
+
+    if (!audioContext) audioContext = new AudioClass();
+
+    await audioContext.resume();
+
+    playing = true;
+    updateMusicUI();
+
+    function nextNote() {
+      if (!playing) return;
+
+      playNote(
+        melody[noteIndex % melody.length],
+        audioContext.currentTime
+      );
+
+      noteIndex++;
+    }
+
+    nextNote();
+    melodyTimer = setInterval(nextNote, 420);
+
+  } catch (error) {
+    playing = false;
+    updateMusicUI();
+
+    document.getElementById("songStatus").textContent =
+      "Tap play again to start your melody ♡";
+  }
+}
+
+// Final celebration
+function celebrate() {
+  const message = document.getElementById("finalMessage");
+
+  message.style.display = "block";
+
+  for (let i = 0; i < 45; i++) {
+    setTimeout(createHeart, i * 90);
+  }
+
+  message.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+</script>
+
+</body>
+</html>
