@@ -1,0 +1,1010 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffe4ef">
+<title>Happy Birthday Sanu 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --pink: #ff72a8;
+  --deep-pink: #e94e8a;
+  --light-pink: #fff0f6;
+  --purple: #b79aff;
+  --text: #6d3652;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: linear-gradient(145deg, #fff2f7, #f4eaff, #ffe5ef);
+  color: var(--text);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 35px 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+  content: "♡";
+  position: absolute;
+  color: #ff9fc5;
+  font-size: 100px;
+  opacity: .25;
+}
+
+.hero::before {
+  top: 35px;
+  left: -15px;
+  transform: rotate(-20deg);
+}
+
+.hero::after {
+  bottom: 25px;
+  right: -10px;
+  transform: rotate(20deg);
+}
+
+.eyebrow {
+  letter-spacing: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  color: var(--deep-pink);
+  font-size: clamp(38px, 10vw, 65px);
+  line-height: 1.12;
+  text-shadow: 2px 3px 0 #fff;
+  animation: appear 1s ease both;
+}
+
+.hero h1 span {
+  display: block;
+  color: #a780df;
+}
+
+.hero p {
+  margin-top: 20px;
+  max-width: 340px;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.hero-heart {
+  font-size: 55px;
+  margin: 20px 0 8px;
+  animation: heartbeat 1.5s infinite;
+}
+
+.btn {
+  border: none;
+  border-radius: 30px;
+  padding: 13px 22px;
+  color: white;
+  background: linear-gradient(135deg, #ff79ae, #e85e9b);
+  box-shadow: 0 7px 20px #e95b9b35;
+  margin-top: 20px;
+  transition: .2s;
+}
+
+.btn.secondary {
+  background: #fff;
+  color: var(--deep-pink);
+  border: 1px solid #ffd1e3;
+}
+
+.btn:focus-visible,
+.note:focus-visible {
+  outline: 3px solid #a780df;
+  outline-offset: 3px;
+}
+
+.section {
+  width: min(100% - 30px, 620px);
+  margin: 25px auto 45px;
+  text-align: center;
+}
+
+.section-title {
+  color: var(--deep-pink);
+  font-size: clamp(26px, 7vw, 36px);
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 auto 22px;
+  max-width: 400px;
+}
+
+.card {
+  background: #ffffffc9;
+  border: 1px solid #ffffff;
+  border-radius: 25px;
+  padding: 25px 20px;
+  box-shadow: 0 12px 35px #d980a51a;
+}
+
+.letter {
+  text-align: left;
+  line-height: 1.95;
+  font-size: 16px;
+  white-space: pre-line;
+}
+
+.letter-heading {
+  text-align: center;
+  color: var(--deep-pink);
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.signature {
+  text-align: right;
+  margin-top: 20px;
+  color: #b34b7d;
+  font-style: italic;
+}
+
+.music-card {
+  background: #ffffffb8;
+  border: 1px solid white;
+  border-radius: 24px;
+  padding: 22px 18px;
+}
+
+.music-icon {
+  font-size: 42px;
+  display: inline-block;
+  animation: musicFloat 2s infinite ease-in-out;
+}
+
+.music-card p {
+  margin-top: 8px;
+  line-height: 1.7;
+}
+
+.music-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.note {
+  border: 1px solid #fff;
+  border-radius: 19px;
+  min-height: 112px;
+  padding: 16px 10px;
+  background: linear-gradient(145deg, #fff, #ffeaf3);
+  color: var(--text);
+  box-shadow: 0 8px 18px #b8668e13;
+  transition: transform .2s;
+}
+
+.note:hover {
+  transform: translateY(-3px);
+}
+
+.note .note-icon {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.note strong {
+  font-size: 14px;
+}
+
+.note-message {
+  display: none;
+  margin-top: 10px;
+  line-height: 1.6;
+  font-size: 13px;
+  color: #a34273;
+}
+
+.note.open {
+  background: #fff;
+}
+
+.note.open .note-message {
+  display: block;
+  animation: appear .35s ease both;
+}
+
+.last-card {
+  padding: 28px 17px;
+  border-radius: 28px;
+  background: linear-gradient(150deg, #fff, #ffe6f0, #f2eaff);
+  border: 1px solid white;
+  box-shadow: 0 15px 35px #d980a526;
+}
+
+.last-card > p {
+  line-height: 1.8;
+  margin-top: 12px;
+}
+
+/* FINAL MUSHROOM SURPRISE */
+
+.mushroom-world {
+  display: none;
+  margin-top: 25px;
+  padding: 18px 8px 24px;
+  border-radius: 24px;
+  background: linear-gradient(#e7f7ff, #fff0f8 72%, #e6f8dc);
+  overflow: hidden;
+}
+
+.mushroom-world.show {
+  display: block;
+  animation: appear .9s ease both;
+}
+
+.mushroom-title {
+  color: #d94f91;
+  font-size: clamp(22px, 6vw, 30px);
+  line-height: 1.4;
+  margin: 10px 0 22px;
+}
+
+.mushroom-scene {
+  min-height: 425px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse at 50% 100%, #b9e8a4 0%, #d9f4c9 35%, transparent 65%),
+    linear-gradient(#dff4ff, #fff0f8 78%);
+}
+
+/* Mushroom */
+
+.big-mushroom {
+  position: relative;
+  z-index: 2;
+  width: 190px;
+  height: 215px;
+  margin-top: 105px;
+  animation: mushroomAppear 1s ease both;
+}
+
+.mushroom-cap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 190px;
+  height: 112px;
+  border-radius: 100px 100px 38px 38px;
+  background: linear-gradient(145deg, #ff8ab5, #ef477f);
+  border: 4px solid #fff5fa;
+  box-shadow: inset -8px -9px 0 #c9306830, 0 8px 15px #c54a7920;
+}
+
+.mushroom-cap::before {
+  content: "✦   •   ✦";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 22px;
+  color: #fff6fb;
+  text-align: center;
+  font-size: 25px;
+  letter-spacing: 8px;
+}
+
+.mushroom-cap::after {
+  content: "•      •";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 58px;
+  color: #fff6fb;
+  text-align: center;
+  font-size: 25px;
+}
+
+.mushroom-stem {
+  position: absolute;
+  width: 100px;
+  height: 112px;
+  left: 45px;
+  top: 84px;
+  border-radius: 20px 20px 35px 35px;
+  background: linear-gradient(90deg, #ffe4b7, #fff5df, #f4d3a5);
+  border: 3px solid #fffaf0;
+}
+
+.mushroom-face {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 132px;
+  z-index: 3;
+  color: #92526d;
+  font-size: 27px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.mushroom-ground {
+  position: relative;
+  z-index: 3;
+  margin-top: -4px;
+  font-size: 22px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* Hanging signboards */
+
+.hanging-sign {
+  position: absolute;
+  z-index: 4;
+  width: 112px;
+  min-height: 76px;
+  padding: 10px 6px;
+  border: 2px solid #fff5e7;
+  border-radius: 9px;
+  box-shadow: 0 6px 12px #75405a22;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.55;
+  transform-origin: top center;
+  animation: swing 3s ease-in-out infinite;
+}
+
+.hanging-sign::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 2px;
+  height: 27px;
+  background: #b78c70;
+}
+
+.hanging-sign::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 24px);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #b78c70;
+  transform: translateX(-50%);
+}
+
+.sign-main {
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 174px;
+  background: #fff4c9;
+  color: #8b5c49;
+  font-size: 12px;
+  animation-delay: -.5s;
+}
+
+.sign-main::before,
+.sign-main::after {
+  left: 50%;
+}
+
+.sign-love {
+  top: 115px;
+  left: 5px;
+  background: #ffe0ec;
+  color: #c43d79;
+  animation-delay: -.8s;
+}
+
+.sign-miss {
+  top: 115px;
+  right: 5px;
+  background: #e9e0ff;
+  color: #7856b2;
+  animation-delay: -1.3s;
+}
+
+.sign-birthday {
+  top: 260px;
+  left: 50%;
+  width: 155px;
+  background: #fff;
+  color: #d94884;
+  transform: translateX(-50%);
+  animation-delay: -.3s;
+}
+
+.sign-birthday::before,
+.sign-birthday::after {
+  left: 50%;
+}
+
+.mushroom-footer {
+  font-size: 14px;
+  line-height: 1.9;
+  margin: 22px 0 5px;
+  color: #b13d78;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px 15px 35px;
+  font-size: 12px;
+  opacity: .8;
+  line-height: 1.8;
+}
+
+/* Floating hearts */
+
+.floating-heart {
+  position: fixed;
+  bottom: -35px;
+  z-index: 20;
+  pointer-events: none;
+  animation: floatUp 4.5s linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: .9; }
+  100% {
+    transform: translateY(-110vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.13); }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mushroomAppear {
+  from {
+    opacity: 0;
+    transform: scale(.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes swing {
+  0%, 100% { rotate: -3deg; }
+  50% { rotate: 3deg; }
+}
+
+@keyframes musicFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@media (max-width: 380px) {
+  .hanging-sign {
+    width: 96px;
+    font-size: 11px;
+  }
+
+  .sign-main {
+    width: 160px;
+  }
+
+  .sign-birthday {
+    width: 145px;
+  }
+
+  .big-mushroom {
+    transform: scale(.88);
+  }
+
+  .mushroom-scene {
+    min-height: 415px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- WELCOME -->
+
+<header class="hero">
+  <div class="eyebrow">A little website made with love 💌</div>
+
+  <h1>HAPPY BIRTHDAY <span>SANU 🎂</span></h1>
+
+  <div class="hero-heart">💗</div>
+
+  <p>
+    Today is all about you, my favourite person.
+    A tiny corner of the internet made to make you smile. 🥹🎀
+  </p>
+
+  <button class="btn" onclick="goToLetter()">
+    Open Your Surprise 💌
+  </button>
+</header>
+
+<!-- LOVE LETTER -->
+
+<section class="section" id="letter">
+  <h2 class="section-title">A Letter For You 💌</h2>
+  <p class="section-subtitle">
+    Some words from the heart, just for you. 🥹💗
+  </p>
+
+  <div class="card">
+    <div class="letter-heading">HAPPY BIRTHDAY SANU 🥹🤭</div>
+
+    <div class="letter">TODAY IS YOUR BDAY AND HAPPY BIRTHDAY BABE 😘
+
+I LOVE YOU SO MUCH AND I MISS YOU SOO MUCHH 💗
+
+On your special day, I wish you endless happiness, success, and beautiful memories. Thank you for being such a special part of my life.
+
+Keep shining, keep smiling, and never forget how special you are to me. 🥹
+
+Happy Birthday, my favourite person. 🎂💕
+
+May your days be filled with love, laughter, little surprises, and all the beautiful things you deserve. Always remember that you are loved more than words can explain. 🫶🏻</div>
+
+    <div class="signature">
+      Forever with love,<br>
+      Your Sanu 💗
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC -->
+
+<section class="section">
+  <h2 class="section-title">A Little Melody 🎶</h2>
+
+  <div class="music-card">
+    <div class="music-icon">🎵💗</div>
+
+    <p>
+      A tiny original melody made by this little website.
+      Play it while you read your birthday surprise. 🌷
+    </p>
+
+    <div class="music-controls">
+      <button class="btn" id="musicButton" onclick="toggleMusic()">
+        ▶ Play Melody
+      </button>
+
+      <button class="btn secondary" onclick="stopMusic()">
+        ■ Stop Music
+      </button>
+    </div>
+
+    <p id="musicStatus" style="font-size:12px;color:#a85a80;">
+      Made with love, just for you. 💕
+    </p>
+  </div>
+</section>
+
+<!-- LITTLE NOTES -->
+
+<section class="section">
+  <h2 class="section-title">Little Notes For You 💌</h2>
+
+  <p class="section-subtitle">
+    Tap each little card to open a tiny message. 🎀
+  </p>
+
+  <div class="notes-grid">
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="note-icon">🥹</span>
+      <strong>When You Miss Me</strong>
+      <span class="note-message">
+        Look at the sky and remember that somewhere, someone is thinking about you. I miss you soo much. 💗
+      </span>
+    </button>
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="note-icon">🌷</span>
+      <strong>A Little Reminder</strong>
+      <span class="note-message">
+        You are special, you are precious, and you deserve all the happiness in this world. Never forget that. 🫶🏻
+      </span>
+    </button>
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="note-icon">😊</span>
+      <strong>For Your Smile</strong>
+      <span class="note-message">
+        Keep smiling, birthday girl! Your happiness makes ordinary days feel magical. 🎀
+      </span>
+    </button>
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="note-icon">✨</span>
+      <strong>My Wish For You</strong>
+      <span class="note-message">
+        May your dreams come true, your heart stay happy, and every new day bring you something beautiful. 🎂
+      </span>
+    </button>
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="note-icon">🫂</span>
+      <strong>A Virtual Hug</strong>
+      <span class="note-message">
+        Sending you the biggest virtual hug ever! Imagine a thousand little hearts surrounding you. 💗💗
+      </span>
+    </button>
+
+    <button class="note" onclick="toggleNote(this)">
+      <span class="note-icon">💖</span>
+      <strong>One Last Thing</strong>
+      <span class="note-message">
+        No matter how many birthday wishes you receive, I hope this little surprise gives you one extra reason to smile. 🥹
+      </span>
+    </button>
+
+  </div>
+</section>
+
+<!-- FINAL SURPRISE -->
+
+<section class="section last" id="lastSurprise">
+  <div class="last-card">
+    <div style="font-size:55px;">🎂💗🎀</div>
+
+    <h2 class="section-title">One Last Thing...</h2>
+
+    <p>
+      A tiny magical place, made just for you, birthday girl. 🥹🍄
+      <br>
+      Are you ready for the final surprise?
+    </p>
+
+    <button
+      class="btn"
+      id="finalButton"
+      onclick="celebrate()"
+    >
+      A Final Birthday Surprise 🎉
+    </button>
+
+    <!-- MUSHROOM GARDEN APPEARS AFTER CLICK -->
+
+    <div class="mushroom-world" id="mushroomWorld">
+
+      <h3 class="mushroom-title">
+        🍄 Sanu's Little Love Garden 🌷
+      </h3>
+
+      <div class="mushroom-scene">
+
+        <!-- MAIN DATE SIGN -->
+
+        <div class="hanging-sign sign-main">
+          ✨ OUR LITTLE DATES ✨<br>
+          Jestha 26 (chat) 💬<br>
+          Jestha 27 (irl) 🫶🏻
+        </div>
+
+        <!-- LEFT SIGN -->
+
+        <div class="hanging-sign sign-love">
+          ❤️<br>
+          I LOVE YOU
+        </div>
+
+        <!-- RIGHT SIGN -->
+
+        <div class="hanging-sign sign-miss">
+          🥹<br>
+          I MISS YOU
+        </div>
+
+        <!-- BIRTHDAY SIGN -->
+
+        <div class="hanging-sign sign-birthday">
+          🎂💗<br>
+          HAPPY BIRTHDAY<br>
+          PUNTU 🧸
+        </div>
+
+        <!-- BIG MUSHROOM -->
+
+        <div class="big-mushroom">
+          <div class="mushroom-cap"></div>
+          <div class="mushroom-stem"></div>
+          <div class="mushroom-face">•ᴗ•</div>
+        </div>
+
+        <div class="mushroom-ground">
+          🌱 🌼 🍀 🌷 🍄 🌷 🍀 🌼 🌱
+        </div>
+
+      </div>
+
+      <p class="mushroom-footer">
+        A little garden, a million feelings. 💗<br>
+        Made with love, just for you, Puntu. 🥹🎀
+      </p>
+
+      <button class="btn secondary" onclick="makeMoreHearts()">
+        More Love For You 💕
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  Made with 💗, a little imagination, and lots of love.<br>
+  Happy Birthday, Sanu & Puntu 🎂🍄
+</footer>
+
+<script>
+/* SCROLL TO LETTER */
+
+function goToLetter() {
+  document.getElementById("letter").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  makeMoreHearts();
+}
+
+/* OPEN LITTLE NOTES */
+
+function toggleNote(button) {
+  button.classList.toggle("open");
+  createHeart();
+}
+
+/* FLOATING HEARTS */
+
+const heartSymbols = ["💗", "💕", "💖", "💘", "🩷", "♡", "✨"];
+
+function createHeart() {
+  const heart = document.createElement("span");
+
+  heart.className = "floating-heart";
+  heart.textContent =
+    heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+  heart.style.left = Math.random() * 95 + "vw";
+  heart.style.fontSize = (15 + Math.random() * 20) + "px";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6500);
+}
+
+function makeMoreHearts() {
+  for (let i = 0; i < 25; i++) {
+    setTimeout(createHeart, i * 100);
+  }
+}
+
+/* ORIGINAL MELODY USING WEB AUDIO */
+
+let audioContext = null;
+let melodyTimer = null;
+let melodyPlaying = false;
+let melodyIndex = 0;
+
+const melody = [
+  [523.25, 0.30],
+  [659.25, 0.30],
+  [783.99, 0.45],
+  [659.25, 0.30],
+  [698.46, 0.30],
+  [783.99, 0.45],
+  [659.25, 0.30],
+  [587.33, 0.30],
+  [523.25, 0.60],
+  [587.33, 0.30],
+  [659.25, 0.30],
+  [523.25, 0.60],
+  [523.25, 0.30],
+  [587.33, 0.30],
+  [659.25, 0.60]
+];
+
+function playNote(frequency, duration) {
+  if (!audioContext || audioContext.state !== "running") return;
+
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.value = frequency;
+
+  gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    0.10,
+    audioContext.currentTime + 0.04
+  );
+  gain.gain.exponentialRampToValueAtTime(
+    0.0001,
+    audioContext.currentTime + duration
+  );
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime + duration + 0.05);
+}
+
+function playNextNote() {
+  if (!melodyPlaying) return;
+
+  const note = melody[melodyIndex];
+
+  playNote(note[0], note[1]);
+
+  melodyIndex = (melodyIndex + 1) % melody.length;
+
+  melodyTimer = setTimeout(
+    playNextNote,
+    (note[1] + 0.12) * 1000
+  );
+}
+
+async function toggleMusic() {
+  const button = document.getElementById("musicButton");
+  const status = document.getElementById("musicStatus");
+
+  if (melodyPlaying) {
+    melodyPlaying = false;
+    clearTimeout(melodyTimer);
+
+    button.textContent = "▶ Play Melody";
+    status.textContent = "Melody paused. Tap play to continue. 💗";
+    return;
+  }
+
+  try {
+    const AudioContextClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioContextClass) {
+      status.textContent =
+        "Sorry, this browser does not support the melody.";
+      return;
+    }
+
+    if (!audioContext) {
+      audioContext = new AudioContextClass();
+    }
+
+    if (audioContext.state === "suspended") {
+      await audioContext.resume();
+    }
+
+    melodyPlaying = true;
+    button.textContent = "Ⅱ Pause Melody";
+    status.textContent = "A little melody, just for you. 🎶💗";
+
+    playNextNote();
+
+  } catch (error) {
+    status.textContent =
+      "The melody could not start. Please try again.";
+  }
+}
+
+function stopMusic() {
+  melodyPlaying = false;
+  clearTimeout(melodyTimer);
+  melodyIndex = 0;
+
+  const button = document.getElementById("musicButton");
+  const status = document.getElementById("musicStatus");
+
+  button.textContent = "▶ Play Melody";
+  status.textContent = "Music stopped. Your little melody awaits. 💕";
+}
+
+/* FINAL MUSHROOM SURPRISE */
+
+function celebrate() {
+  const garden = document.getElementById("mushroomWorld");
+  const button = document.getElementById("finalButton");
+
+  garden.classList.add("show");
+  button.style.display = "none";
+
+  makeMoreHearts();
+
+  setTimeout(() => {
+    garden.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }, 200);
+}
+
+/* A FEW HEARTS ON LOAD */
+
+window.addEventListener("load", () => {
+  setTimeout(createHeart, 500);
+  setTimeout(createHeart, 1200);
+  setTimeout(createHeart, 1900);
+});
+</script>
+
+</body>
+</html>
